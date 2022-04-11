@@ -1,0 +1,18 @@
+# Max implemented in Hardware
+
+ADDI	x4, x0, -65535
+MAX		x4, x2, x3
+
+# Max implemented in Software
+
+ADDI	x4, x0, -65535
+ADD		x5, x2, x3
+SVPC	x9, 2
+SVPC	x10, 5
+LD		x6, x2
+SUB		x7, x6, x4
+BRN		x10
+ADD		x4, x6, x0
+ADDI	x2, x2, 1
+SUB		x8, x5, x2
+BRN		x9
